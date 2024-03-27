@@ -1,0 +1,101 @@
+{
+  "name": "artopolot-components",
+  "displayName": "Artopolot Components",
+  "description": "Автоматическое создание темплейтов для Artopolot",
+  "version": "1.0.0",
+  "publisher": "graveric",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Artopolot: конфигурация контроллеров",
+      "properties": {
+        "artopolot-controllers.sets": {
+          "type": "array",
+          "default": [],
+          "description": "Наборы правил"
+        }
+      }  
+    },
+    "commands": [
+      {
+        "command": "artopolot-controllers.createController",
+        "title": "Create Twig Controller"
+      },
+      {
+        "command": "artopolot-controllers.createJsonController",
+        "title": "Create Json Controller"
+      },     
+      {
+        "command": "artopolot-controllers.sortJson",
+        "title": "Sort Json"
+      },
+      {
+        "command": "artopolot-controllers.makeCss",
+        "title": "CSS by controller"        
+      },
+      {
+        "command": "artopolot-controllers.makeJs",
+        "title": "JS for controller"        
+      }                  
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "artopolot-controllers.createController",
+          "when": "editorLangId == json"
+        },
+        {
+          "command": "artopolot-controllers.createJsonController",
+          "when": "editorLangId == json"
+        },
+        {
+          "command": "artopolot-controllers.sortJson",
+          "when": "editorLangId == json"
+        },                        
+        {
+          "command": "artopolot-controllers.makeCss",
+          "when": "editorLangId == json"
+        },
+        {
+          "command": "artopolot-controllers.makeJs",
+          "when": "editorLangId == json"
+        }                
+      ],
+      "editor/context": [
+        {
+          "when": "resourceLangId == json",
+          "command": "artopolot-controllers.createController",
+          "group": "Artopolot"
+        },
+        {
+          "when": "resourceLangId == json",
+          "command": "artopolot-controllers.createJsonController",
+          "group": "Artopolot"
+        },        
+        {
+          "when": "resourceLangId == json",
+          "command": "artopolot-controllers.sortJson",
+          "group": "Artopolot"
+        },
+        {
+          "when": "resourceLangId == json",
+          "command": "artopolot-controllers.makeCss",
+          "group": "Artopolot"
+        },
+        {
+          "when": "resourceLangId == json",
+          "command": "artopolot-controllers.makeJs",
+          "group": "Artopolot"
+        }                                                     
+      ]
+    }
+  }
+}
