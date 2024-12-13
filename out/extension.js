@@ -11,6 +11,7 @@ const path = require('path');
             "twigs": "/home/graveric/vs/test/twig", //абсолютный путь до директории твигов
             "twigController" : "/home/graveric/vs/test/dot/twig.php.dot", // образец твиг-контроллера
             "jsonController" : "/home/graveric/vs/test/dot/json.php.dot", //образец json-контроллера
+            "actionController" : "/home/graveric/vs/test/dot/action.php.dot", //образец action-контроллера
             "js" : "/home/graveric/vs/test/js", //путь до директории js
             "dotjs": "/home/graveric/vs/test/dot/init.js.dot", //образец js
             "indexjs": "/home/graveric/vs/test/js/khe.js", //индексный инициализирующий файл js
@@ -269,6 +270,11 @@ class Resolver {
 		this.createPhp("jsonController");
 	}
 
+	actionController() {
+		this.vars.controllerName = this.controllerName+this.suffix;
+		this.createPhp("actionController");
+	}	
+
 	createPhp(dot) {
 		let d = this.options[dot];
 		if (!d) {
@@ -331,6 +337,7 @@ function activate(context) {
 
 	let twigC = vscode.commands.registerCommand('artopolot-controllers.createController', () => actRes("twigController"));
 	let jsonC = vscode.commands.registerCommand('artopolot-controllers.createJsonController', () => actRes("jsonController"));
+	let actionC = vscode.commands.registerCommand('artopolot-controllers.createActionController', () => actRes("actionController"));
 	let jsonS = vscode.commands.registerCommand('artopolot-controllers.sortJson', () => actRes("sortJson"));
 	let cssS = vscode.commands.registerCommand('artopolot-controllers.makeCss', () => actRes("makeCss"));
 	let jssS = vscode.commands.registerCommand('artopolot-controllers.makeJs', () => actRes("makeJs"));
